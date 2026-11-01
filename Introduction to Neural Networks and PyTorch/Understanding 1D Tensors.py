@@ -36,7 +36,7 @@ floats_to_tensor = torch.tensor([0.0, 1.0, 2.0, 3.0, 4.0])
 print("The dtype of tensor object after converting it to tensor:", floats_to_tensor.dtype)
 print("The type of tensor object after converting it to tensor:", floats_to_tensor.type())
 
-# Ép kiểu ( Specify dtype ) ngay khi khởi tạo
+# Ép kiểu ngay khi khởi tạo
 list_floats = [0.0, 1.0, 2.0, 3.0, 4.0]
 floats_int_tensor = torch.tensor(list_floats, dtype=torch.int64)
 print("The dtype of tensor object is:", floats_int_tensor.dtype)
@@ -49,7 +49,7 @@ old_int_tensor = torch.tensor([0, 1, 2, 3, 4])
 new_float_tensor = old_int_tensor.type(torch.FloatTensor)
 print("The type of the converted new_float_tensor:", new_float_tensor.type())
 
-# Kiểm tra kích thước (size), số chiều (ndimension) và đổi hình dạng (view)
+# Kiểm tra kích thước , số chiều và đổi hình dạng 
 print("The size of the new_float_tensor:", new_float_tensor.size())
 print("The dimension of the new_float_tensor:", new_float_tensor.ndimension())
 
@@ -92,9 +92,9 @@ torch_to_list = this_tensor.tolist()
 print('tensor:', this_tensor, "\nlist:", torch_to_list)
 
 
-# ==========================================
-# 2. INDEXING AND SLICING (Truy cập và Cắt lát)
-# ==========================================
+# =========================
+# 2. INDEXING AND SLICING 
+# =========================
 print("\n--- 2. INDEXING AND SLICING ---")
 
 index_tensor = torch.tensor([-5, 1, 11, 13, 47])
@@ -114,7 +114,7 @@ print("Inital value on index 4:", tensor_sample[4])
 tensor_sample[4] = 0
 print("Modified tensor:", tensor_sample)
 
-# Slicing (Cắt lát)
+# Slicing 
 subset_tensor_sample = tensor_sample[1:4]
 print("Original tensor sample:", tensor_sample)
 print("The subset of tensor sample:", subset_tensor_sample)
@@ -136,9 +136,9 @@ tensor_sample[selected_indexes] = 100000
 print("Modified tensor with one value:", tensor_sample)
 
 
-# ==========================================
-# 3. TENSOR FUNCTIONS (Các hàm thống kê & toán học)
-# ==========================================
+# =====================
+# 3. TENSOR FUNCTIONS
+# =====================
 print("\n--- 3. TENSOR FUNCTIONS ---")
 
 math_tensor = torch.tensor([1.0, -1.0, 1, -1])
@@ -151,19 +151,16 @@ print("Tensor example:", max_min_tensor)
 print("Maximum number in the tensor:", max_min_tensor.max())
 print("Minimum number in the tensor:", max_min_tensor.min())
 
-# Hàm lượng giác (Sin)
 pi_tensor = torch.tensor([0, np.pi/2, np.pi])
 sin = torch.sin(pi_tensor)
 print("The sin result of pi_tensor:", sin)
 
-# Tạo dãy số đều nhau bằng torch.linspace
 len_5_tensor = torch.linspace(-2, 2, steps=5)
 print("First Try on linspace (5 steps):", len_5_tensor)
 
 len_9_tensor = torch.linspace(-2, 2, steps=9)
 print("Second Try on linspace (9 steps):", len_9_tensor)
 
-# Vẽ đồ thị hàm sin với 100 điểm
 pi_tensor = torch.linspace(0, 2*np.pi, 100)
 sin_result = torch.sin(pi_tensor)
 plt.plot(pi_tensor.numpy(), sin_result.numpy())
@@ -171,41 +168,39 @@ plt.title("Sin Wave (0 to 2*pi)")
 plt.show() # Đóng cửa sổ biểu đồ này để code chạy tiếp xuống dưới
 
 
-# ==========================================
-# 4. TENSOR OPERATIONS (Các phép toán trên Tensor)
-# ==========================================
+# ======================
+# 4. TENSOR OPERATIONS
+# ======================
 print("\n--- 4. TENSOR OPERATIONS ---")
 
-# Cộng 2 vector
 u = torch.tensor([1, 0])
 v = torch.tensor([0, 1])
 w = u + v
 print("The result tensor u + v:", w)
 
-# Vẽ biểu đồ vector u, v, w
 plotVec([
     {"vector": u.numpy(), "name": 'u', "color": 'r'},
     {"vector": v.numpy(), "name": 'v', "color": 'b'},
     {"vector": w.numpy(), "name": 'w', "color": 'g'}
 ])
 
-# Cộng tensor với một hằng số (Broadcasting)
+# Broadcasting
 u = torch.tensor([1, 2, 3, -1])
 v = u + 1
 print("Addition with constant (u + 1):", v)
 
-# Nhân tensor với một hằng số (Scalar multiplication)
+# Scalar multiplication
 u = torch.tensor([1, 2])
 v = 2 * u
 print("The result of 2 * u:", v)
 
-# Nhân từng phần tử giữa 2 tensor (Hadamard product)
+# Hadamard product
 u = torch.tensor([1, 2])
 v = torch.tensor([3, 2])
 w = u * v
 print("The result of u * v:", w)
 
-# Tích vô hướng (Dot Product)
+# Dot Product
 u = torch.tensor([1, 2])
 v = torch.tensor([3, 2])
 print("Dot Product of u, v:", torch.dot(u, v))
